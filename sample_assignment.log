@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Arch Linux) (preloaded format=pdflatex 2015.11.17)  10 JUN 2016 17:58
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Arch Linux) (preloaded format=pdflatex 2015.11.17)  10 JUN 2016 18:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -742,7 +742,7 @@ File: data/final_cnn_firstlayer.png Graphic file (type png)
 
 <use data/final_cnn_firstlayer.png>
 Package pdftex.def Info: data/final_cnn_firstlayer.png used on input line 242.
-(pdftex.def)             Requested size: 197.26657pt x 179.62694pt.
+(pdftex.def)             Requested size: 123.29114pt x 112.26363pt.
 
 <data/final_cnn_secondlayer.png, id=41, 617.30624pt x 560.0925pt>
 File: data/final_cnn_secondlayer.png Graphic file (type png)
@@ -750,33 +750,49 @@ File: data/final_cnn_secondlayer.png Graphic file (type png)
 <use data/final_cnn_secondlayer.png>
 Package pdftex.def Info: data/final_cnn_secondlayer.png used on input line 248.
 
-(pdftex.def)             Requested size: 197.26657pt x 178.98541pt.
+(pdftex.def)             Requested size: 123.29114pt x 111.86267pt.
+
+<data/final_cnn_thirdlayer.png, id=42, 617.30624pt x 401.5pt>
+File: data/final_cnn_thirdlayer.png Graphic file (type png)
+
+<use data/final_cnn_thirdlayer.png>
+Package pdftex.def Info: data/final_cnn_thirdlayer.png used on input line 254.
+(pdftex.def)             Requested size: 123.29114pt x 80.1883pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
+<data/final_cnn_fourthlayer.png, id=43, 511.9125pt x 590.205pt>
+File: data/final_cnn_fourthlayer.png Graphic file (type png)
+
+<use data/final_cnn_fourthlayer.png>
+Package pdftex.def Info: data/final_cnn_fourthlayer.png used on input line 260.
+
+(pdftex.def)             Requested size: 123.29114pt x 142.1474pt.
+
 
 Class scrartcl Warning: incompatible usage of \@ssect detected.
 (scrartcl)              You've used the KOMA-Script implementation of \@ssect
 (scrartcl)              from within a non compatible caller, that does not
 (scrartcl)              \scr@s@ct@@nn@m@ locally.
 (scrartcl)              This could result in several error messages on input li
-ne 253.
+ne 264.
 
 
-Underfull \hbox (badness 3849) in paragraph at lines 258--259
+Underfull \hbox (badness 3849) in paragraph at lines 269--270
 \OT1/cmr/m/n/10.95 (+20) We im-ple-mented and trained a CNN on a
  []
 
 [4 <./data/cluttered_image.png> <./data/final_cnn_firstlayer.png> <./data/final
-_cnn_secondlayer.png>]
+_cnn_secondlayer.png> <./data/final_cnn_thirdlayer.png> <./data/final_cnn_fourt
+hlayer.png>]
 
 Class scrartcl Warning: incompatible usage of \@ssect detected.
 (scrartcl)              You've used the KOMA-Script implementation of \@ssect
 (scrartcl)              from within a non compatible caller, that does not
 (scrartcl)              \scr@s@ct@@nn@m@ locally.
 (scrartcl)              This could result in several error messages on input li
-ne 262.
+ne 275.
 
 [5
 
@@ -787,7 +803,7 @@ Class scrartcl Warning: incompatible usage of \@ssect detected.
 (scrartcl)              from within a non compatible caller, that does not
 (scrartcl)              \scr@s@ct@@nn@m@ locally.
 (scrartcl)              This could result in several error messages on input li
-ne 268.
+ne 281.
 
 
 AED: lastpage setting LastPage
@@ -799,11 +815,11 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 10535 strings out of 493054
- 164311 string characters out of 6140585
+ 10547 strings out of 493054
+ 164648 string characters out of 6140585
  440501 words of memory out of 5000000
- 13776 multiletter control sequences out of 15000+600000
- 26092 words of font info for 104 fonts, out of 8000000 for 9000
+ 13784 multiletter control sequences out of 15000+600000
+ 26143 words of font info for 105 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  54i,11n,47p,524b,393s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-dist/fon
@@ -822,10 +838,10 @@ fonts/cm/cmti10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8
 e/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texmf-dist/fonts/t
 ype1/urw/helvetic/uhvbo8a.pfb></usr/share/texmf-dist/fonts/type1/urw/helvetic/u
 hvro8a.pfb>
-Output written on sample_assignment.pdf (6 pages, 534511 bytes).
+Output written on sample_assignment.pdf (6 pages, 575829 bytes).
 PDF statistics:
- 111 PDF objects out of 1000 (max. 8388607)
+ 115 PDF objects out of 1000 (max. 8388607)
  70 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 26670 words of extra memory for PDF output out of 29859 (max. 10000000)
+ 26680 words of extra memory for PDF output out of 29859 (max. 10000000)
 
