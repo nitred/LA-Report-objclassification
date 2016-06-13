@@ -15,7 +15,7 @@
 \usepackage[svgnames]{xcolor}	                          % Enabling colors by their 'svgnames'
 \usepackage[hang, small,labelfont=bf,up,textfont=it,up]{caption} % Custom captions under/above floats
 \usepackage{epstopdf}	 % Converts .eps to .pdf
-\usepackage{subfig}	     % Subfigures
+%\usepackage{subfig}	     % Subfigures
 \usepackage{booktabs}	 % Nicer tables
 \usepackage{fix-cm}       % Custom fontsizes
 \usepackage{listings}
@@ -23,6 +23,9 @@
 \usepackage{float}
 \usepackage{url}
 \usepackage{amsmath}
+\usepackage{caption}
+\usepackage{subcaption}
+%\usepackage[hyperref = true, backend=biber, style=numeric, sorting = none]{biblatex}
 
 %%% Custom sectioning (sectsty package)
 \usepackage{sectsty}	 % Custom sectioning (see below)
@@ -121,7 +124,7 @@ This equations can be thought of as performing an discrete-operation to all poss
 \begin{figure}[H]
     \centering
     \includegraphics[width=.9\linewidth]{data/2d_cnn.png}
-    \caption{Discrete convolution applied to an input-matrix}
+    \caption{Discrete convolution applied to an input-matrix \cite{Goodfellow-et-al-2016-Book}}
     \label{2d_cnn}
 \end{figure}
 
@@ -136,7 +139,7 @@ The general Convolutional Network architecture consists of several convolutional
 \begin{figure}[H]
     \centering
     \includegraphics[width=.9\linewidth]{data/max_pooling.png}
-    \caption{Max-pooling}
+    \caption{Max-pooling \cite{pooling_cnn}}
     \label{max_pooling}
 \end{figure}
 
@@ -149,7 +152,7 @@ The following figure \ref{typical_architecture} shows the typical architecture o
 \begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth]{data/typical_cnn.png}
-    \caption{Typical CNN architecture}
+    \caption{Typical CNN architecture \cite{pooling_cnn}}
     \label{typical_architecture}
 \end{figure}
 
@@ -157,7 +160,7 @@ After training several layers of convolution and subsampling (e.g. pooling) lear
 
 \subsection*{Intermediate CNN Results and Visualization}
 
-Before performing any training on our data, we wanted to test the capabilities of the used framework \textit{Keras} on a well tested dataset. Therefore we trained a smaller model with 2D convolutional layers and max-pooling using the MNIST dataset (see Figure \ref{cnn_results_2}). In \ref{cnn_results_1} we show the results after the first convolutional layer. This model was trained using the Keras framework on top of Theano.
+Before performing any training on our data, we wanted to test the capabilities of the used framework \textit{Keras} \cite{keras_page} on a well tested dataset. Therefore we trained a smaller model with 2D convolutional layers and max-pooling using the MNIST \cite{mnist} dataset (see Figure \ref{cnn_results_2}). In Figure \ref{cnn_results_3} we show the results after the first convolutional layer. This model was trained using the Keras framework on top of Theano.
 
 \begin{figure}[H]
     \centering
@@ -175,7 +178,7 @@ The learned 32 kernels after the convolutional layer can be seen in the followin
     \label{cnn_results_3}
 \end{figure}
 
-And the application of these filters or learned kernels to the image presented in \ref{cnn_results_2} is shown below. 
+And the application of these filters or learned kernels to the image presented in Figure \ref{cnn_results_2} is shown below. 
 
 \begin{figure}[H]
     \centering
@@ -255,7 +258,6 @@ We wanted to test the framework for sparse coding which is \textit{sparsex} \cit
     \label{sc_mnist_confusion_matrix}
 \end{figure}
 
-
 \section{Approach}
 
 \subsection*{CNN-Architecture}
@@ -304,6 +306,7 @@ First we split the dataset into training and test sets using 5 fold cross valida
 \subsection*{@Home Objects}
 For training the final model we collected a datset consisting of a total of 424 Images of the following RoboCup@Home-Objects:
 \begin{enumerate}
+    \setlength\itemsep{-0.25em}
     \item Pack of Coffee
     \item Paper coffee-cup
     \item Juice-box
@@ -319,6 +322,7 @@ For training the final model we collected a datset consisting of a total of 424 
 \subsection*{@Work Objects}
 For training the final model we collected a datset consisting of a total of 360 Images of the following RoboCup@Work-Objects \cite{robocup_atwork_rulebook}:
 \begin{enumerate}
+    \setlength\itemsep{-0.25em}
 	\item F20 20 B
 	\item F20 20 G
 	\item S40 40 B 
@@ -340,15 +344,17 @@ The Images were then cropped and scaled to fit the network input size of 32x32 p
 \section{Results}
 
 \subsection*{CNN}
-After 100 epochs of training, which took approximately ??, the model achieved an accuracy 98.55\%.
+After 100 epochs of training, which took approximately 5 minutes and 47 seconds, the model achieved an accuracy 98.55\%. The model has additionally been tested on the dataset that was created from the RoboCup@Work objects and yielded an accuracy of 83.48\%.
 
-We took a cluttered picture by accident which has correctly been classified.
+We took a cluttered picture by accident, our model was able to classify the object correctly.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\linewidth]{data/cluttered_image}
     \caption{Cluttered image of the class "Water bottle" with hand of experimenter. The network was able to classify the image correctly.}
 \end{figure}
+
+Our datasets, as well as the implementation of the CNN is available here: \begin{small}\url{https://github.com/oarriaga/machine_learning_algorithms/tree/master/algorithms/convolutional_neural_network}\end{small}
 
 When plotting the activations of convolutional layers, the abstraction and reduction in dimensionality that occurs can be made visible.
 
@@ -376,7 +382,33 @@ When plotting the activations of convolutional layers, the abstraction and reduc
     \caption{Output after the fourth convolutional layer of our network, when presented with an input image.}
 \end{figure}
 
-Our datasets, as well as the implementation of the CNN is available here: \url{https://github.com/oarriaga/machine_learning_algorithms/tree/master/algorithms/convolutional_neural_network}
+The following two images show final representations that our model learned. It can be seen that the representations look very similar, but are different in a specific area. The corresponding pictures are indeed the same object, but rotated in the picture. The differing areas therefore correspond to the roatation of the object.
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.45\linewidth}
+        \includegraphics[width=\linewidth]{data/final_1.png}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.45\linewidth}
+        \includegraphics[width=\linewidth]{data/final_2.png}
+    \end{subfigure}
+    \caption{Final Representations for two ketchup-bottles, which are rotated.}
+    \label{}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.45\linewidth}
+        \includegraphics[width=\linewidth]{data/ketchup_final_1.png}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.45\linewidth}
+        \includegraphics[width=\linewidth]{data/ketchup_final_2.png}
+    \end{subfigure}
+    \caption{The two images of rotated ketchup bottles.}
+    \label{}
+\end{figure}
 
 
 \subsection*{Sparse Coding}
@@ -427,14 +459,12 @@ After tests on 5-fold cross validation, we were able to achieve 71.63 \% accurac
     \label{sc_atwork_confusion_matrix}
 \end{figure}
 
-
 The implementation of the Sparse Coding is available here: \begin{small}\url{https://github.com/nitred/sparsex}\end{small}
-
 
 \section{Conclusion}
 
 \section*{CNN}
-We implemented and trained a CNN on a dataset that we created from RoboCup@Home and RoboCup@Work objects. The results were very good, a real system could easily function with a classification accuracy of 98.55\%. 
+We implemented and trained a CNN on a dataset that we created from RoboCup@Home and RoboCup@Work objects. The results were very good, a real system could easily function with a classification accuracy of 98.55\%. The accuracy for RoboCup@Work objects is: 83.48\%.
 
 In the future several issues should be addressed however. Since the dataset we created was relatively small, overfitting might be an issue. A second dataset could be created with the same objects but differnt conditions as lighting, background, occlusions and viewing angle. Artificial methods for enlarging the dataset, like applying small transformations could also be used.
 
@@ -443,27 +473,21 @@ We implemented and trained a feature extraction using Sparse Coding and classifi
 
 For the future there are several problems that can be solved. Firstly, the cropping of the images was done manually which caused scaling errors which may have made some objects look like others. Secondly, the \textit{sparsex} implementation currently only supports grayscale images and should support RGB images which would add additional features. Thirdly, the dictionary that was learnt on the training data had a lot of noise in it, therefore in the future the right parameters for dictionary learning must be explored. Lastly, we need to collect a larger dataset so as to extract more meaningful features and have enough data to properly train the classifier.
 
- 
-
-
-\newpage
-
-
+\onecolumn
 
 \begin{thebibliography}{9}
 
 \bibitem{ufldl_sparse_coding}
-http://ufldl.stanford.edu/wiki/index.php/Sparse
-\_Coding
+    \url{http://ufldl.stanford.edu/wiki/index.php/Sparse\_Codingst}
 
 \bibitem{sparsex}
-https://github.com/nitred/sparsex
+    \url{https://github.com/nitred/sparsex}
 
 \bibitem{olshausen_1997}
 Olshausen, Bruno A., and David J. Field. \textit{"Sparse coding with an overcomplete basis set: A strategy employed by V1?."} Vision research 37.23 (1997): 3311-3325.
 
 \bibitem{mnist}
-http://yann.lecun.com/exdb/mnist/
+    \url{http://yann.lecun.com/exdb/mnist/}
 
 \bibitem{coates2011analysis}
 Coates, Adam, Andrew Y. Ng, and Honglak Lee. "An analysis of single-layer networks in unsupervised feature learning." International conference on artificial intelligence and statistics. 2011.
@@ -472,10 +496,10 @@ Coates, Adam, Andrew Y. Ng, and Honglak Lee. "An analysis of single-layer networ
 Mairal, Julien, et al. "Online dictionary learning for sparse coding." Proceedings of the 26th annual international conference on machine learning. ACM, 2009.
 
 \bibitem{spams}
-http://spams-devel.gforge.inria.fr/
+    \url{http://spams-devel.gforge.inria.fr/}
 
 \bibitem{svm_light}
-http://svmlight.joachims.org/
+    \url{http://svmlight.joachims.org/}
 
 \bibitem{yang2009linear}
 Yang, Jianchao, et al. "Linear spatial pyramid matching using sparse coding for image classification." Computer Vision and Pattern Recognition, 2009. CVPR 2009. IEEE Conference on. IEEE, 2009.
@@ -484,23 +508,24 @@ Yang, Jianchao, et al. "Linear spatial pyramid matching using sparse coding for 
 Scherer, Dominik, Andreas Müller, and Sven Behnke. "Evaluation of pooling operations in convolutional architectures for object recognition." Artificial Neural Networks–ICANN 2010. Springer Berlin Heidelberg, 2010. 92-101.
 
 \bibitem{sklearn_cross_validation}
-http://scikit-learn.org/stable/modules/genera
-ted/sklearn.cross\_validation.StratifiedKFold.html
+    \url{http://scikit-learn.org/stable/modules/generated/sklearn.cross\_validation.StratifiedKFold.html}
 
 \bibitem{wiki_feature_scaling}
-https://en.wikipedia.org/wiki/Feature\_scaling
+    \url{https://en.wikipedia.org/wiki/Feature\_scaling}
 
 \bibitem{robocup_atwork_rulebook}
-http://www.robocupatwork.org/rules.html
+    \url{http://www.robocupatwork.org/rules.html}
+
+\bibitem{Goodfellow-et-al-2016-Book}
+Ian Goodfellow Yoshua Bengio and Aaron Courville, \textit{Deep Learning}, 2016, Book in preparation for MIT Press. \url{www.deeplearning.org}
+
+\bibitem{pooling_cnn}
+Wikipedia-article "Convolutional Neural Networks" \url{https://en.wikipedia.org/wiki/Convolutional_neural_network}
+
+\bibitem{keras_page}
+Keras: Deep Learning library for Theano and TensorFlow \url{www.keras.io}
 
 \end{thebibliography}
-
-
-\newpage
-
-\onecolumn
-
-\section*{Appendix B: Results}
 
 \HorRule
 
