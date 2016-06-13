@@ -1,23 +1,15 @@
 \relax 
-\citation{Goodfellow-et-al-2016-Book}
-\citation{Goodfellow-et-al-2016-Book}
 \select@language{english}
 \@writefile{toc}{\select@language{english}}
 \@writefile{lof}{\select@language{english}}
 \@writefile{lot}{\select@language{english}}
 \@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}}
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Discrete convolution applied to an input-matrix \cite  {Goodfellow-et-al-2016-Book}\relax }}{1}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Discrete convolution applied to an input-matrix\relax }}{1}}
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
 \newlabel{2d_cnn}{{1}{1}}
-\citation{pooling_cnn}
-\citation{pooling_cnn}
-\citation{pooling_cnn}
-\citation{pooling_cnn}
-\citation{keras_page}
-\citation{mnist}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Max-pooling \cite  {pooling_cnn}\relax }}{2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Max-pooling\relax }}{2}}
 \newlabel{max_pooling}{{2}{2}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Typical CNN architecture \cite  {pooling_cnn}\relax }}{2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Typical CNN architecture\relax }}{2}}
 \newlabel{typical_architecture}{{3}{2}}
 \@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Image taken from MNIST dataset. Every row and column represents one pixel size.\relax }}{2}}
 \newlabel{cnn_results_2}{{4}{2}}
@@ -33,17 +25,16 @@
 \newlabel{cnn_results_4.png}{{7}{3}}
 \@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Image taken from MNIST dataset. Every row and column represents one pixel size. The image size is 28x28 pixels.\relax }}{4}}
 \newlabel{sc_mnist_image}{{8}{4}}
-\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces A montage of 8x8 pixel patches extracted from the original 28x28 image. A total of 441 patches are extracted per image.\relax }}{4}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces A montage (i.e. arranging patches in the same location they were extracted from) of the extracted patches. The montage consists of 441 patches extracted from a 28x28 image where each patch is 8x8 pixels.\relax }}{4}}
 \newlabel{sc_mnist_patches_montage}{{9}{4}}
 \@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces A montage of whitened patches which is a result of applying whitening or sphering to the patches obtained in figure 9.\relax }}{4}}
 \newlabel{sc_mnist_whitened_patches_montage}{{10}{4}}
-\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces A correlation plot of the whitened patches which shows decorrelation (reduced redundancy) within the data since the features are correlated only with themselves.\relax }}{4}}
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces A correlation plot of the whitened patches which shows decorrelation (reduced redundancy) among the extracted patches. This is expected and ideal behaviour.\relax }}{4}}
 \newlabel{sc_mnist_whitened_patches_correlation}{{11}{4}}
 \@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces A montage of the trained dictionary which has 400 elements (20x20) where each element has a dimension of 8x8 pixels. The dictionary elements are similar to the gabor filters.\relax }}{4}}
 \newlabel{sc_mnist_dictionary}{{12}{4}}
-\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces A confusion matrix of the results to show how the classifier confuses one class label with another. From the figure it is clear that the classifier is confident about each class due to the prominent diagonal.\relax }}{4}}
+\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces A normalized confusion matrix of the results of the classification. Diagonal elements show the ratio of samples that were correctly classified, and non diagonal elements show the ratio of samples that were misclassified.\relax }}{4}}
 \newlabel{sc_mnist_confusion_matrix}{{13}{4}}
-\@writefile{toc}{\contentsline {section}{\numberline {2}Approach}{4}}
 \citation{sklearn_cross_validation}
 \citation{coates2011analysis}
 \citation{coates2011analysis}
@@ -59,29 +50,26 @@
 \citation{svm_light}
 \citation{svm_light}
 \citation{robocup_atwork_rulebook}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Approach}{5}}
 \@writefile{toc}{\contentsline {section}{\numberline {3}Datasets}{5}}
 \@writefile{toc}{\contentsline {section}{\numberline {4}Results}{6}}
 \@writefile{lof}{\contentsline {figure}{\numberline {14}{\ignorespaces Cluttered image of the class "Water bottle" with hand of experimenter. The network was able to classify the image correctly.\relax }}{6}}
 \@writefile{lof}{\contentsline {figure}{\numberline {15}{\ignorespaces Output after the first convolutional layer of our network, when presented with an input image.\relax }}{6}}
 \@writefile{lof}{\contentsline {figure}{\numberline {16}{\ignorespaces Output after the second convolutional layer of our network, when presented with an input image.\relax }}{6}}
-\@writefile{lof}{\contentsline {figure}{\numberline {17}{\ignorespaces Output after the third convolutional layer of our network, when presented with an input image.\relax }}{6}}
-\@writefile{lof}{\contentsline {figure}{\numberline {18}{\ignorespaces Output after the fourth convolutional layer of our network, when presented with an input image.\relax }}{6}}
-\@writefile{lof}{\contentsline {figure}{\numberline {19}{\ignorespaces Final Representations for two ketchup-bottles, which are rotated.\relax }}{7}}
-\newlabel{}{{19}{7}}
-\@writefile{lof}{\contentsline {figure}{\numberline {20}{\ignorespaces The two images of rotated ketchup bottles.\relax }}{7}}
-\newlabel{}{{20}{7}}
-\@writefile{lof}{\contentsline {figure}{\numberline {21}{\ignorespaces Image taken from @Work dataset. Every row and column represents one pixel size. The image size is 67x67 pixels.\relax }}{7}}
-\newlabel{sc_atwork_image}{{21}{7}}
-\@writefile{lof}{\contentsline {figure}{\numberline {22}{\ignorespaces A montage of 8x8 pixel patches extracted from the original 67x67 image. A total of 3600 patches are extracted per image.\relax }}{7}}
-\newlabel{sc_atwork_patches_montage}{{22}{7}}
-\@writefile{lof}{\contentsline {figure}{\numberline {23}{\ignorespaces A montage of whitened patches which is a result of applying whitening or sphering to the patches obtained in the previous figure.\relax }}{7}}
-\newlabel{sc_atwork_whitened_patches_montage}{{23}{7}}
-\@writefile{lof}{\contentsline {figure}{\numberline {24}{\ignorespaces A correlation plot of the whitened patches which shows decorrelation (reduced redundancy) within the data since the features are correlated only with themselves. This is a correct and expected behaviour.\relax }}{7}}
-\newlabel{sc_atwork_whitened_patches_correlation}{{24}{7}}
-\@writefile{lof}{\contentsline {figure}{\numberline {25}{\ignorespaces A montage of the trained dictionary which has 400 elements (20x20) where each element has a dimension of 8x8 pixels. The filters that have been learnt here are not ideal and have a lot of noise as compared to the filters shown for the MNIST dataset in a previous figure.\relax }}{8}}
-\newlabel{sc_atwork_dictionary}{{25}{8}}
-\@writefile{lof}{\contentsline {figure}{\numberline {26}{\ignorespaces A confusion matrix of the test vs predicted results which shows no results for label 7 which is object R20. Also we can see a lot of confusion among class labels 0, 1, 2, 4 and 5.\relax }}{8}}
-\newlabel{sc_atwork_confusion_matrix}{{26}{8}}
+\@writefile{lof}{\contentsline {figure}{\numberline {17}{\ignorespaces Output after the third convolutional layer of our network, when presented with an input image.\relax }}{7}}
+\@writefile{lof}{\contentsline {figure}{\numberline {18}{\ignorespaces Output after the fourth convolutional layer of our network, when presented with an input image.\relax }}{7}}
+\@writefile{lof}{\contentsline {figure}{\numberline {19}{\ignorespaces Image taken from @Work dataset. Every row and column represents one pixel size. The image size is 67x67 pixels.\relax }}{7}}
+\newlabel{sc_atwork_image}{{19}{7}}
+\@writefile{lof}{\contentsline {figure}{\numberline {20}{\ignorespaces A montage of 8x8 pixel patches extracted from the original 67x67 image. A total of 3600 patches are extracted per image.\relax }}{7}}
+\newlabel{sc_atwork_patches_montage}{{20}{7}}
+\@writefile{lof}{\contentsline {figure}{\numberline {21}{\ignorespaces A montage of whitened patches which is a result of applying whitening or sphering to the patches obtained in the previous figure.\relax }}{7}}
+\newlabel{sc_atwork_whitened_patches_montage}{{21}{7}}
+\@writefile{lof}{\contentsline {figure}{\numberline {22}{\ignorespaces A correlation plot of the whitened patches which shows decorrelation (reduced redundancy) within the data since the features are correlated only with themselves. This is a correct and expected behaviour.\relax }}{7}}
+\newlabel{sc_atwork_whitened_patches_correlation}{{22}{7}}
+\@writefile{lof}{\contentsline {figure}{\numberline {23}{\ignorespaces A montage of the trained dictionary which has 400 elements (20x20) where each element has a dimension of 8x8 pixels. The filters that have been learnt here are not ideal and have a lot of noise as compared to the filters shown for the MNIST dataset in a previous figure.\relax }}{8}}
+\newlabel{sc_atwork_dictionary}{{23}{8}}
+\@writefile{lof}{\contentsline {figure}{\numberline {24}{\ignorespaces A confusion matrix of the test vs predicted results which shows no results for label 7 which is object R20. Also we can see a lot of confusion among class labels 0, 1, 2, 4 and 5.\relax }}{8}}
+\newlabel{sc_atwork_confusion_matrix}{{24}{8}}
 \@writefile{toc}{\contentsline {section}{\numberline {5}Conclusion}{8}}
 \bibcite{ufldl_sparse_coding}{1}
 \bibcite{sparsex}{2}
@@ -96,9 +84,6 @@
 \bibcite{sklearn_cross_validation}{11}
 \bibcite{wiki_feature_scaling}{12}
 \bibcite{robocup_atwork_rulebook}{13}
-\bibcite{Goodfellow-et-al-2016-Book}{14}
-\bibcite{pooling_cnn}{15}
-\bibcite{keras_page}{16}
-\newlabel{LastPage}{{}{9}}
-\xdef\lastpage@lastpage{9}
+\newlabel{LastPage}{{}{10}}
+\xdef\lastpage@lastpage{10}
 \gdef\lastpage@lastpageHy{}

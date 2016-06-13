@@ -15,7 +15,7 @@
 \usepackage[svgnames]{xcolor}	                          % Enabling colors by their 'svgnames'
 \usepackage[hang, small,labelfont=bf,up,textfont=it,up]{caption} % Custom captions under/above floats
 \usepackage{epstopdf}	 % Converts .eps to .pdf
-%\usepackage{subfig}	     % Subfigures
+\usepackage{subfig}	     % Subfigures
 \usepackage{booktabs}	 % Nicer tables
 \usepackage{fix-cm}       % Custom fontsizes
 \usepackage{listings}
@@ -23,9 +23,6 @@
 \usepackage{float}
 \usepackage{url}
 \usepackage{amsmath}
-\usepackage{caption}
-\usepackage{subcaption}
-%\usepackage[hyperref = true, backend=biber, style=numeric, sorting = none]{biblatex}
 
 %%% Custom sectioning (sectsty package)
 \usepackage{sectsty}	 % Custom sectioning (see below)
@@ -124,7 +121,7 @@ This equations can be thought of as performing an discrete-operation to all poss
 \begin{figure}[H]
     \centering
     \includegraphics[width=.9\linewidth]{data/2d_cnn.png}
-    \caption{Discrete convolution applied to an input-matrix \cite{Goodfellow-et-al-2016-Book}}
+    \caption{Discrete convolution applied to an input-matrix}
     \label{2d_cnn}
 \end{figure}
 
@@ -139,7 +136,7 @@ The general Convolutional Network architecture consists of several convolutional
 \begin{figure}[H]
     \centering
     \includegraphics[width=.9\linewidth]{data/max_pooling.png}
-    \caption{Max-pooling \cite{pooling_cnn}}
+    \caption{Max-pooling}
     \label{max_pooling}
 \end{figure}
 
@@ -152,7 +149,7 @@ The following figure \ref{typical_architecture} shows the typical architecture o
 \begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth]{data/typical_cnn.png}
-    \caption{Typical CNN architecture \cite{pooling_cnn}}
+    \caption{Typical CNN architecture}
     \label{typical_architecture}
 \end{figure}
 
@@ -160,7 +157,7 @@ After training several layers of convolution and subsampling (e.g. pooling) lear
 
 \subsection*{Intermediate CNN Results and Visualization}
 
-Before performing any training on our data, we wanted to test the capabilities of the used framework \textit{Keras} \cite{keras_page} on a well tested dataset. Therefore we trained a smaller model with 2D convolutional layers and max-pooling using the MNIST \cite{mnist} dataset (see Figure \ref{cnn_results_2}). In Figure \ref{cnn_results_3} we show the results after the first convolutional layer. This model was trained using the Keras framework on top of Theano.
+Before performing any training on our data, we wanted to test the capabilities of the used framework \textit{Keras} on a well tested dataset. Therefore we trained a smaller model with 2D convolutional layers and max-pooling using the MNIST dataset (see Figure \ref{cnn_results_2}). In \ref{cnn_results_1} we show the results after the first convolutional layer. This model was trained using the Keras framework on top of Theano.
 
 \begin{figure}[H]
     \centering
@@ -178,7 +175,7 @@ The learned 32 kernels after the convolutional layer can be seen in the followin
     \label{cnn_results_3}
 \end{figure}
 
-And the application of these filters or learned kernels to the image presented in Figure \ref{cnn_results_2} is shown below. 
+And the application of these filters or learned kernels to the image presented in \ref{cnn_results_2} is shown below. 
 
 \begin{figure}[H]
     \centering
@@ -203,11 +200,11 @@ While techniques such as Principal Component Analysis (PCA) allow us to learn a 
     \label{cnn_results_4.png}
 \end{figure}
 
-S(.) is a sparsity cost function which penalizes ai for being far from zero. We can interpret the first term of the sparse coding objective as a reconstruction term which tries to force the algorithm to provide a good representation of $\mathbf{x}$ and the second term as a sparsity penalty which forces our representation of $\mathbf{x}$ to be sparse. The constant $\lambda$ is a scaling constant to determine the relative importance of these two contributions. The intuition for sparse coding can be seen as the following \cite{olshausen_1997} :
+S(.) is a sparsity cost function which penalizes $\alpha_{i}$ for being far from zero. We can interpret the first term of the sparse coding objective as a reconstruction term which tries to force the algorithm to provide a good representation of $\mathbf{x}$ and the second term as a sparsity penalty which forces our representation of $\mathbf{x}$ to be sparse. The $\lambda$ is a scaling constant to determine the relative importance of these two contributions. The intuition for sparse coding can be seen as the following \cite{olshausen_1997} :
 
 \textit{cost\_function = reconstruction\_error + sparseness} 
 
-\noindent The equation minimizes the cost function in an iterative manner. For one iteration, first the encoding (the extraction of coefficients $\alpha$) is kept constant and a dictionary $\phi$ that minimizes the cost function is found and then keeping the dictionary contant the encoding (the extraction of coefficients $\alpha$) that minimizes the cost function is found.
+\noindent The typical sparseness constraint is L1 regularization also known as \textit{lasso}. The equation minimizes the cost function in an iterative manner. For one iteration, first the encoding (the extraction of coefficients $\alpha$) is kept constant and a dictionary $\phi$ that minimizes the cost function is found and then keeping the dictionary contant the encoding (the extraction of coefficients $\alpha$) that minimizes the cost function is found.
 
 
 \subsection*{Intermediate Sparse Coding Results and Visualization}
@@ -215,19 +212,21 @@ We wanted to test the framework for sparse coding which is \textit{sparsex} \cit
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.3\linewidth]{data/sc_data/sc_mnist_image.jpg}
+    \includegraphics[width=0.45\linewidth]{data/sc_data/sc_mnist_image.jpg}
     \caption{Image taken from MNIST dataset. Every row and column represents one pixel size. The image size is 28x28 pixels.}
     \label{sc_mnist_image}
 \end{figure}
 
+A part of preprocessing the data is patch extraction, where we extract small 8x8 pixel patches from the original 28x28 image covering the entire image. This results in extraction of $(28-8+1)^{2}$ patches. The motivation behind extraction of patches is to obtain small localized features. 
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.45\linewidth]{data/sc_data/sc_mnist_patches_montage.jpg}
-    \caption{A montage of 8x8 pixel patches extracted from the original 28x28 image. A total of 441 patches are extracted per image.}
+    \caption{A montage (i.e. arranging patches in the same location they were extracted from) of the extracted patches. The montage consists of 441 patches extracted from a 28x28 image where each patch is 8x8 pixels.}
     \label{sc_mnist_patches_montage}
 \end{figure}
 
+Once the patches are extracted for one image, they are preprocessed further by applying normalization and whitening. All patches from one image are whitened together to decorrelate (remove redundancies) from the patches. This makes feature extraction and classification converge faster.
 
 \begin{figure}[H]
     \centering
@@ -239,24 +238,25 @@ We wanted to test the framework for sparse coding which is \textit{sparsex} \cit
  
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\linewidth]{data/sc_data/sc_mnist_whitened_patches_correlation.png}
-    \caption{A correlation plot of the whitened patches which shows decorrelation (reduced redundancy) within the data since the features are correlated only with themselves.}
+    \includegraphics[width=0.9\linewidth]{data/sc_data/sc_mnist_whitened_patches_correlation.png}
+    \caption{A correlation plot of the whitened patches which shows decorrelation (reduced redundancy) among the extracted patches. This is expected and ideal behaviour.}
     \label{sc_mnist_whitened_patches_correlation}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\linewidth]{data/sc_data/sc_mnist_dictionary.jpg}
+    \includegraphics[width=0.55\linewidth]{data/sc_data/sc_mnist_dictionary.jpg}
     \caption{A montage of the trained dictionary which has 400 elements (20x20) where each element has a dimension of 8x8 pixels. The dictionary elements are similar to the gabor filters.}
     \label{sc_mnist_dictionary}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1.0\linewidth]{data/sc_data/sc_mnist_confusion_matrix.png}
-    \caption{A confusion matrix of the results to show how the classifier confuses one class label with another. From the figure it is clear that the classifier is confident about each class due to the prominent diagonal.}
+    \includegraphics[width=0.9\linewidth]{data/sc_data/sc_mnist_confusion_matrix.png}
+    \caption{A normalized confusion matrix of the results of the classification. Diagonal elements show the ratio of samples that were correctly classified, and non diagonal elements show the ratio of samples that were misclassified.}
     \label{sc_mnist_confusion_matrix}
 \end{figure}
+
 
 \section{Approach}
 
@@ -306,7 +306,6 @@ First we split the dataset into training and test sets using 5 fold cross valida
 \subsection*{@Home Objects}
 For training the final model we collected a datset consisting of a total of 424 Images of the following RoboCup@Home-Objects:
 \begin{enumerate}
-    \setlength\itemsep{-0.25em}
     \item Pack of Coffee
     \item Paper coffee-cup
     \item Juice-box
@@ -322,7 +321,6 @@ For training the final model we collected a datset consisting of a total of 424 
 \subsection*{@Work Objects}
 For training the final model we collected a datset consisting of a total of 360 Images of the following RoboCup@Work-Objects \cite{robocup_atwork_rulebook}:
 \begin{enumerate}
-    \setlength\itemsep{-0.25em}
 	\item F20 20 B
 	\item F20 20 G
 	\item S40 40 B 
@@ -344,9 +342,9 @@ The Images were then cropped and scaled to fit the network input size of 32x32 p
 \section{Results}
 
 \subsection*{CNN}
-After 100 epochs of training, which took approximately 5 minutes and 47 seconds, the model achieved an accuracy 98.55\%. The model has additionally been tested on the dataset that was created from the RoboCup@Work objects and yielded an accuracy of 83.48\%.
+After 100 epochs of training, which took approximately ??, the model achieved an accuracy 98.55\%.
 
-We took a cluttered picture by accident, our model was able to classify the object correctly.
+We took a cluttered picture by accident which has correctly been classified.
 
 \begin{figure}[H]
     \centering
@@ -354,25 +352,23 @@ We took a cluttered picture by accident, our model was able to classify the obje
     \caption{Cluttered image of the class "Water bottle" with hand of experimenter. The network was able to classify the image correctly.}
 \end{figure}
 
-Our datasets, as well as the implementation of the CNN is available here: \begin{small}\url{https://github.com/oarriaga/machine_learning_algorithms/tree/master/algorithms/convolutional_neural_network}\end{small}
-
 When plotting the activations of convolutional layers, the abstraction and reduction in dimensionality that occurs can be made visible.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\linewidth]{data/final_cnn_firstlayer}
+    \includegraphics[width=0.5\linewidth]{data/final_cnn_firstlayer.png}
     \caption{Output after the first convolutional layer of our network, when presented with an input image.}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\linewidth]{data/final_cnn_secondlayer}
+    \includegraphics[width=0.5\linewidth]{data/final_cnn_secondlayer.png}
     \caption{Output after the second convolutional layer of our network, when presented with an input image.}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\linewidth]{data/final_cnn_thirdlayer}
+    \includegraphics[width=0.5\linewidth]{data/final_cnn_thirdlayer.png}
     \caption{Output after the third convolutional layer of our network, when presented with an input image.}
 \end{figure}
 
@@ -382,41 +378,15 @@ When plotting the activations of convolutional layers, the abstraction and reduc
     \caption{Output after the fourth convolutional layer of our network, when presented with an input image.}
 \end{figure}
 
-The following two images show final representations that our model learned. It can be seen that the representations look very similar, but are different in a specific area. The corresponding pictures are indeed the same object, but rotated in the picture. The differing areas therefore correspond to the roatation of the object.
-
-\begin{figure}[H]
-    \centering
-    \begin{subfigure}[b]{0.45\linewidth}
-        \includegraphics[width=\linewidth]{data/final_1.png}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}[b]{0.45\linewidth}
-        \includegraphics[width=\linewidth]{data/final_2.png}
-    \end{subfigure}
-    \caption{Final Representations for two ketchup-bottles, which are rotated.}
-    \label{}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \begin{subfigure}[b]{0.45\linewidth}
-        \includegraphics[width=\linewidth]{data/ketchup_final_1.png}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}[b]{0.45\linewidth}
-        \includegraphics[width=\linewidth]{data/ketchup_final_2.png}
-    \end{subfigure}
-    \caption{The two images of rotated ketchup bottles.}
-    \label{}
-\end{figure}
+Our datasets, as well as the implementation of the CNN is available here: \url{https://github.com/oarriaga/machine_learning_algorithms/tree/master/algorithms/convolutional_neural_network}
 
 
 \subsection*{Sparse Coding}
-After tests on 5-fold cross validation, we were able to achieve 71.63 \% accuracy. Following are some of the visualizations from the experiments:
+After tests on 5-fold cross validation, we were able to achieve 71.63 \% accuracy on the Robocup@Work dataset. Following are some of the visualizations from the experiments:
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.3\linewidth]{data/sc_data/sc_atwork_image.jpg}
+    \includegraphics[width=0.5\linewidth]{data/sc_data/sc_atwork_image.jpg}
     \caption{Image taken from @Work dataset. Every row and column represents one pixel size. The image size is 67x67 pixels.}
     \label{sc_atwork_image}
 \end{figure}
@@ -437,34 +407,36 @@ After tests on 5-fold cross validation, we were able to achieve 71.63 \% accurac
     \label{sc_atwork_whitened_patches_montage}
 \end{figure}
  
- 
+
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\linewidth]{data/sc_data/sc_atwork_whitened_patches_correlation.png}
+    \includegraphics[width=0.9\linewidth]{data/sc_data/sc_atwork_whitened_patches_correlation.png}
     \caption{A correlation plot of the whitened patches which shows decorrelation (reduced redundancy) within the data since the features are correlated only with themselves. This is a correct and expected behaviour.}
     \label{sc_atwork_whitened_patches_correlation}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\linewidth]{data/sc_data/sc_atwork_dictionary.jpg}
+    \includegraphics[width=0.65\linewidth]{data/sc_data/sc_atwork_dictionary.jpg}
     \caption{A montage of the trained dictionary which has 400 elements (20x20) where each element has a dimension of 8x8 pixels. The filters that have been learnt here are not ideal and have a lot of noise  as compared to the filters shown for the MNIST dataset in a previous figure.}
     \label{sc_atwork_dictionary}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\linewidth]{data/sc_data/sc_atwork_confusion_matrix.png}
+    \includegraphics[width=0.9\linewidth]{data/sc_data/sc_atwork_confusion_matrix.png}
     \caption{A confusion matrix of the test vs predicted results which shows no results for label 7 which is object R20. Also we can see a lot of confusion among class labels 0, 1, 2, 4 and 5.}
     \label{sc_atwork_confusion_matrix}
 \end{figure}
 
+
 The implementation of the Sparse Coding is available here: \begin{small}\url{https://github.com/nitred/sparsex}\end{small}
+
 
 \section{Conclusion}
 
 \section*{CNN}
-We implemented and trained a CNN on a dataset that we created from RoboCup@Home and RoboCup@Work objects. The results were very good, a real system could easily function with a classification accuracy of 98.55\%. The accuracy for RoboCup@Work objects is: 83.48\%.
+We implemented and trained a CNN on a dataset that we created from RoboCup@Home and RoboCup@Work objects. The results were very good, a real system could easily function with a classification accuracy of 98.55\%. 
 
 In the future several issues should be addressed however. Since the dataset we created was relatively small, overfitting might be an issue. A second dataset could be created with the same objects but differnt conditions as lighting, background, occlusions and viewing angle. Artificial methods for enlarging the dataset, like applying small transformations could also be used.
 
@@ -473,21 +445,27 @@ We implemented and trained a feature extraction using Sparse Coding and classifi
 
 For the future there are several problems that can be solved. Firstly, the cropping of the images was done manually which caused scaling errors which may have made some objects look like others. Secondly, the \textit{sparsex} implementation currently only supports grayscale images and should support RGB images which would add additional features. Thirdly, the dictionary that was learnt on the training data had a lot of noise in it, therefore in the future the right parameters for dictionary learning must be explored. Lastly, we need to collect a larger dataset so as to extract more meaningful features and have enough data to properly train the classifier.
 
-\onecolumn
+ 
+
+
+\newpage
+
+
 
 \begin{thebibliography}{9}
 
 \bibitem{ufldl_sparse_coding}
-    \url{http://ufldl.stanford.edu/wiki/index.php/Sparse\_Codingst}
+http://ufldl.stanford.edu/wiki/index.php/Sparse
+\_Coding
 
 \bibitem{sparsex}
-    \url{https://github.com/nitred/sparsex}
+https://github.com/nitred/sparsex
 
 \bibitem{olshausen_1997}
 Olshausen, Bruno A., and David J. Field. \textit{"Sparse coding with an overcomplete basis set: A strategy employed by V1?."} Vision research 37.23 (1997): 3311-3325.
 
 \bibitem{mnist}
-    \url{http://yann.lecun.com/exdb/mnist/}
+http://yann.lecun.com/exdb/mnist/
 
 \bibitem{coates2011analysis}
 Coates, Adam, Andrew Y. Ng, and Honglak Lee. "An analysis of single-layer networks in unsupervised feature learning." International conference on artificial intelligence and statistics. 2011.
@@ -496,10 +474,10 @@ Coates, Adam, Andrew Y. Ng, and Honglak Lee. "An analysis of single-layer networ
 Mairal, Julien, et al. "Online dictionary learning for sparse coding." Proceedings of the 26th annual international conference on machine learning. ACM, 2009.
 
 \bibitem{spams}
-    \url{http://spams-devel.gforge.inria.fr/}
+http://spams-devel.gforge.inria.fr/
 
 \bibitem{svm_light}
-    \url{http://svmlight.joachims.org/}
+http://svmlight.joachims.org/
 
 \bibitem{yang2009linear}
 Yang, Jianchao, et al. "Linear spatial pyramid matching using sparse coding for image classification." Computer Vision and Pattern Recognition, 2009. CVPR 2009. IEEE Conference on. IEEE, 2009.
@@ -508,24 +486,23 @@ Yang, Jianchao, et al. "Linear spatial pyramid matching using sparse coding for 
 Scherer, Dominik, Andreas Müller, and Sven Behnke. "Evaluation of pooling operations in convolutional architectures for object recognition." Artificial Neural Networks–ICANN 2010. Springer Berlin Heidelberg, 2010. 92-101.
 
 \bibitem{sklearn_cross_validation}
-    \url{http://scikit-learn.org/stable/modules/generated/sklearn.cross\_validation.StratifiedKFold.html}
+http://scikit-learn.org/stable/modules/genera
+ted/sklearn.cross\_validation.StratifiedKFold.html
 
 \bibitem{wiki_feature_scaling}
-    \url{https://en.wikipedia.org/wiki/Feature\_scaling}
+https://en.wikipedia.org/wiki/Feature\_scaling
 
 \bibitem{robocup_atwork_rulebook}
-    \url{http://www.robocupatwork.org/rules.html}
-
-\bibitem{Goodfellow-et-al-2016-Book}
-Ian Goodfellow Yoshua Bengio and Aaron Courville, \textit{Deep Learning}, 2016, Book in preparation for MIT Press. \url{www.deeplearning.org}
-
-\bibitem{pooling_cnn}
-Wikipedia-article "Convolutional Neural Networks" \url{https://en.wikipedia.org/wiki/Convolutional_neural_network}
-
-\bibitem{keras_page}
-Keras: Deep Learning library for Theano and TensorFlow \url{www.keras.io}
+http://www.robocupatwork.org/rules.html
 
 \end{thebibliography}
+
+
+\newpage
+
+\onecolumn
+
+\section*{Appendix B: Results}
 
 \HorRule
 
