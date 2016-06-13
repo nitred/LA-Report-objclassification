@@ -13,19 +13,77 @@
 \newlabel{typical_architecture}{{3}{2}}
 \@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Image taken from MNIST dataset. Every row and column represents one pixel size.\relax }}{2}}
 \newlabel{cnn_results_2}{{4}{2}}
+\citation{ufldl_sparse_coding}
+\citation{olshausen_1997}
+\citation{sparsex}
+\citation{mnist}
 \@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces All 32 kernels learned from the first convolutional layer.\relax }}{3}}
 \newlabel{cnn_results_3}{{5}{3}}
 \@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces All 32 Kernels applied to an example of the datase.\relax }}{3}}
 \newlabel{cnn_results_4.png}{{6}{3}}
-\@writefile{toc}{\contentsline {section}{\numberline {2}Approach}{3}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}CNN-Training}{3}}
-\@writefile{toc}{\contentsline {section}{\numberline {3}Results}{3}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Cluttered image of the class "Water bottle" with hand of experimenter. The network was able to classify the image correctly.\relax }}{4}}
-\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Output after the first convolutional layer of our network, when presented with an input image.\relax }}{4}}
-\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Output after the second convolutional layer of our network, when presented with an input image.\relax }}{4}}
-\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Output after the second convolutional layer of our network, when presented with an input image.\relax }}{4}}
-\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Output after the second convolutional layer of our network, when presented with an input image.\relax }}{4}}
-\@writefile{toc}{\contentsline {section}{\numberline {4}Conclusion}{4}}
-\newlabel{LastPage}{{}{6}}
-\xdef\lastpage@lastpage{6}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces The cost function used for finding the basis functions and the coefficients $\alpha $.\relax }}{3}}
+\newlabel{cnn_results_4.png}{{7}{3}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Image taken from MNIST dataset. Every row and column represents one pixel size. The image size is 28x28 pixels.\relax }}{4}}
+\newlabel{sc_mnist_image}{{8}{4}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces A montage of 8x8 pixel patches extracted from the original 28x28 image. A total of 441 patches are extracted per image.\relax }}{4}}
+\newlabel{sc_mnist_patches_montage}{{9}{4}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces A montage of whitened patches which is a result of applying whitening or sphering to the patches obtained in figure 9.\relax }}{4}}
+\newlabel{sc_mnist_whitened_patches_montage}{{10}{4}}
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces A correlation plot of the whitened patches which shows decorrelation (reduced redundancy) within the data since the features are correlated only with themselves.\relax }}{4}}
+\newlabel{sc_mnist_whitened_patches_correlation}{{11}{4}}
+\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces A montage of the trained dictionary which has 400 elements (20x20) where each element has a dimension of 8x8 pixels. The dictionary elements are similar to the gabor filters.\relax }}{4}}
+\newlabel{sc_mnist_dictionary}{{12}{4}}
+\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces A confusion matrix of the results to show how the classifier confuses one class label with another. From the figure it is clear that the classifier is confident about each class due to the prominent diagonal.\relax }}{4}}
+\newlabel{sc_mnist_confusion_matrix}{{13}{4}}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Approach}{4}}
+\citation{sklearn_cross_validation}
+\citation{coates2011analysis}
+\citation{coates2011analysis}
+\citation{coates2011analysis}
+\citation{coates2011analysis}
+\citation{mairal2009online}
+\citation{spams}
+\citation{mairal2009online}
+\citation{spams}
+\citation{yang2009linear}
+\citation{scherer2010evaluation}
+\citation{wiki_feature_scaling}
+\citation{svm_light}
+\citation{svm_light}
+\citation{robocup_atwork_rulebook}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Datasets}{5}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Results}{6}}
+\@writefile{lof}{\contentsline {figure}{\numberline {14}{\ignorespaces Cluttered image of the class "Water bottle" with hand of experimenter. The network was able to classify the image correctly.\relax }}{6}}
+\@writefile{lof}{\contentsline {figure}{\numberline {15}{\ignorespaces Output after the first convolutional layer of our network, when presented with an input image.\relax }}{6}}
+\@writefile{lof}{\contentsline {figure}{\numberline {16}{\ignorespaces Output after the second convolutional layer of our network, when presented with an input image.\relax }}{6}}
+\@writefile{lof}{\contentsline {figure}{\numberline {17}{\ignorespaces Output after the third convolutional layer of our network, when presented with an input image.\relax }}{6}}
+\@writefile{lof}{\contentsline {figure}{\numberline {18}{\ignorespaces Output after the fourth convolutional layer of our network, when presented with an input image.\relax }}{6}}
+\@writefile{lof}{\contentsline {figure}{\numberline {19}{\ignorespaces Image taken from @Work dataset. Every row and column represents one pixel size. The image size is 67x67 pixels.\relax }}{7}}
+\newlabel{sc_atwork_image}{{19}{7}}
+\@writefile{lof}{\contentsline {figure}{\numberline {20}{\ignorespaces A montage of 8x8 pixel patches extracted from the original 67x67 image. A total of 3600 patches are extracted per image.\relax }}{7}}
+\newlabel{sc_atwork_patches_montage}{{20}{7}}
+\@writefile{lof}{\contentsline {figure}{\numberline {21}{\ignorespaces A montage of whitened patches which is a result of applying whitening or sphering to the patches obtained in the previous figure.\relax }}{7}}
+\newlabel{sc_atwork_whitened_patches_montage}{{21}{7}}
+\@writefile{lof}{\contentsline {figure}{\numberline {22}{\ignorespaces A correlation plot of the whitened patches which shows decorrelation (reduced redundancy) within the data since the features are correlated only with themselves. This is a correct and expected behaviour.\relax }}{7}}
+\newlabel{sc_atwork_whitened_patches_correlation}{{22}{7}}
+\@writefile{lof}{\contentsline {figure}{\numberline {23}{\ignorespaces A montage of the trained dictionary which has 400 elements (20x20) where each element has a dimension of 8x8 pixels. The filters that have been learnt here are not ideal and have a lot of noise as compared to the filters shown for the MNIST dataset in a previous figure.\relax }}{7}}
+\newlabel{sc_atwork_dictionary}{{23}{7}}
+\@writefile{lof}{\contentsline {figure}{\numberline {24}{\ignorespaces A confusion matrix of the test vs predicted results which shows no results for label 7 which is object R20. Also we can see a lot of confusion among class labels 0, 1, 2, 4 and 5.\relax }}{7}}
+\newlabel{sc_atwork_confusion_matrix}{{24}{7}}
+\bibcite{ufldl_sparse_coding}{1}
+\bibcite{sparsex}{2}
+\bibcite{olshausen_1997}{3}
+\bibcite{mnist}{4}
+\bibcite{coates2011analysis}{5}
+\bibcite{mairal2009online}{6}
+\bibcite{spams}{7}
+\bibcite{svm_light}{8}
+\bibcite{yang2009linear}{9}
+\bibcite{scherer2010evaluation}{10}
+\bibcite{sklearn_cross_validation}{11}
+\bibcite{wiki_feature_scaling}{12}
+\bibcite{robocup_atwork_rulebook}{13}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Conclusion}{8}}
+\newlabel{LastPage}{{}{9}}
+\xdef\lastpage@lastpage{9}
 \gdef\lastpage@lastpageHy{}
